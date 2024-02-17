@@ -37,7 +37,7 @@ struct ImmersiveView: View {
             }
         }
         .onAppear {
-            imageDownloader.fetchImage(with: viewModel.prompt)
+            imageDownloader.initiateImageGeneration(with: viewModel.prompt)
         }
     }
 }

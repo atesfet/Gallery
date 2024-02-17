@@ -18,7 +18,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            TextField("Enter prompt here", text: $prompt) // Add a TextField for the prompt
+            TextField("Enter prompt here", text: $prompt) 
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
