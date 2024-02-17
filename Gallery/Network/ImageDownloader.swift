@@ -14,12 +14,12 @@ class ImageDownloader: ObservableObject {
 
     func fetchImage(with prompt: String) {
         self.isLoading = true // Indicate that loading has started
-        let urlString = "https://api-inference.huggingface.co/models/artificialguybr/360Redmond"
+        let urlString = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
         guard let url = URL(string: urlString) else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("Bearer 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", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer API_KEY", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let body = ["inputs": prompt]
