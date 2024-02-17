@@ -11,6 +11,7 @@ import RealityKitContent
 
 struct ImmersiveView: View {
     @ObservedObject private var imageDownloader = ImageDownloader()
+    @EnvironmentObject var viewModel: SharedViewModel
 
     var body: some View {
         Group {
@@ -36,7 +37,7 @@ struct ImmersiveView: View {
             }
         }
         .onAppear {
-            imageDownloader.fetchImage(with: "Mountains with ice")
+            imageDownloader.initiateImageGeneration(with: viewModel.prompt)
         }
     }
 }

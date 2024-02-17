@@ -10,27 +10,31 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-    
-    //Environment Propery Wrapper for open a ImmersiveSpace
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
-
-    //Environment Propery Wrapper for closing a ImmersiveSpace
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
-
-    //Boolean to check if ImmersiveSpace is active
     @State private var immersiveSpaceActive: Bool = false
+    @State private var prompt: String = ""
+    @EnvironmentObject var viewModel: SharedViewModel
+
     var body: some View {
-        //Button to control the immersiveSpace appearance
-        Button(immersiveSpaceActive ? "Exit Environment" : "View Environment") {
-            Task {
-                if !immersiveSpaceActive {
-                    _ = await openImmersiveSpace(id: "Environment")
-                    immersiveSpaceActive = true
-                } else {
-                    await dismissImmersiveSpace()
-                    immersiveSpaceActive = false
+        VStack {
+            TextField("Enter prompt here", text: $prompt) 
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            Button(immersiveSpaceActive ? "Exit Environment" : "View Environment") {
+                Task {
+                    if !immersiveSpaceActive {
+                        viewModel.prompt = prompt 
+                        _ = await openImmersiveSpace(id: "Environment")
+                        immersiveSpaceActive = true
+                    } else {
+                        await dismissImmersiveSpace()
+                        immersiveSpaceActive = false
+                    }
                 }
             }
+
         }
     }
 }
