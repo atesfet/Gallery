@@ -146,7 +146,9 @@ struct BreathingAnimationView: View {
                         Text(isBreathingIn ? "Exhale" : "Inhale")
                             .font(.title)
                             .foregroundColor(.white)
-                            .position(x: size.width / 2, y: size.height - 80)
+                        
+                            .position(x: size.width / 2, y: size.height - 100)
+                      
                         if showCompletion {
                             Text("Good Job!")
                                 .font(.title)
@@ -160,12 +162,17 @@ struct BreathingAnimationView: View {
                     }
 //                }
                 
-                Button("Leave the Environment") {
-                    exitEnvironment()
-                    dismiss()
-                }
+                    VStack {
+                                Spacer() // Pushes everything below to the bottom
+                                Button("Leave the Environment") {
+                                    exitEnvironment()
+                                    dismiss()
+                                }
+                                .padding(.bottom, 150) // Adjust padding to place it above the "Inhale"/"Exhale" text
+                            }
+                Spacer()
                 .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
