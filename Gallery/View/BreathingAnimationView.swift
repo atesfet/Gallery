@@ -85,7 +85,7 @@ struct BreathingAnimationView: View {
     let exerciseOptions: [TimeInterval] = [30, 60, 180] // 30s, 1min, 3min, 5min
 
     var body: some View {
-        NavigationView{
+//        NavigationView{
             GeometryReader { geometry in
                 let size = geometry.size
                 let smallerCircleRadius: CGFloat = 30
@@ -158,7 +158,7 @@ struct BreathingAnimationView: View {
                         
                         
                     }
-                }
+//                }
                 
                 Button("Leave the Environment") {
                     exitEnvironment()

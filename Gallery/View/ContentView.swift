@@ -26,10 +26,13 @@ struct ContentView: View {
                 Text("Where would you like to go?")
                     .font(.system(size: 40, weight: .bold))
                 
+                
                 TextField("Enter your dream art space here!", text: $prompt)
                     .font(.system(size: 40, weight: .bold))
                     .multilineTextAlignment(.center)
-                    .frame(width: 800, height: 100)
+                    .frame(width: 800, height: 160)
+                    .padding(.vertical, 18)
+                    .padding(.horizontal, 18)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                     
@@ -40,11 +43,16 @@ struct ContentView: View {
                             immersiveSpaceActive = true
                         }
                     }
+                    .font(.system(size: 35))
+                    .padding()
+                    .frame(minWidth: 200, minHeight: 50)
+                    .buttonStyle(.borderedProminent)
+                    .padding(.vertical, 26)
                   
                 
             } else {
                 
-                MeditateWelcomeView(immersiveSpaceActive: $immersiveSpaceActive, prompt: $prompt, exitEnvironment: {
+               MeditateWelcomeView(immersiveSpaceActive: $immersiveSpaceActive, prompt: $prompt, exitEnvironment: {
                     Task {
                         await dismissImmersiveSpace()
                         immersiveSpaceActive = false
