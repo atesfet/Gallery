@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Gallery
 //
-//  Created by Prabaljit Walia on 2/16/24.
+//  Created by Helena Zhang on 2/16/24.
 //
 
 import SwiftUI
@@ -15,27 +15,58 @@ struct ContentView: View {
     @State private var immersiveSpaceActive: Bool = false
     @State private var prompt: String = ""
     @EnvironmentObject var viewModel: SharedViewModel
-
+    
     var body: some View {
-        VStack {
-            TextField("Enter prompt here", text: $prompt) 
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            Button(immersiveSpaceActive ? "Exit Environment" : "View Environment") {
+        Text("Welcome to The Gallery")
+            .font(.system(size: 60, weight: .bold))
+        Text("Where would you like to go?")
+            .font(.system(size: 40, weight: .bold))
+        
+        TextField("Enter your dream art space here!", text: $prompt)
+            .font(.system(size: 40, weight: .bold))
+            .multilineTextAlignment(.center)
+            .frame(width: 800, height: 100) // Adjust width and height as needed
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+        
+        Button("View Environment") {
+            Task {
+                viewModel.prompt = prompt
+                _ = await openImmersiveSpace(id: "Environment")
+                immersiveSpaceActive = true
+            }
+        }.onAppear {
+            immersiveSpaceActive = true
+        }
+        
+        if immersiveSpaceActive {
+            Button("Exit Environment") {
                 Task {
-                    if !immersiveSpaceActive {
-                        viewModel.prompt = prompt 
-                        _ = await openImmersiveSpace(id: "Environment")
-                        immersiveSpaceActive = true
-                    } else {
-                        await dismissImmersiveSpace()
-                        immersiveSpaceActive = false
+                    await dismissImmersiveSpace()
+                    immersiveSpaceActive = false
+                    
+                    
+                    Task {
+                        if !immersiveSpaceActive {
+                            viewModel.prompt = prompt
+                            _ = await openImmersiveSpace(id: "Environment")
+                            immersiveSpaceActive = true
+                        } else {
+                            await dismissImmersiveSpace()
+                            immersiveSpaceActive = false
+                        }
                     }
                 }
+                
             }
-
+                .background()
+            {
+                Image("Gallery")
+            }
         }
+        
+        
+        
+
     }
 }
 

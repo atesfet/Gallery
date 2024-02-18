@@ -13,7 +13,6 @@ class ImageDownloader: ObservableObject {
     @Published var downloadedCGImage: CGImage? = nil
     @Published var isLoading: Bool = false
 
-    private let apiKey = "API_KEY"
     private var timer: Timer?
     private let statusBaseUrl = "https://backend.blockadelabs.com/api/v1/imagine/requests/"
 
