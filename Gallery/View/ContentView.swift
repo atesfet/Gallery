@@ -1,3 +1,4 @@
+
 //
 //  ContentView.swift
 //  Gallery
@@ -7,7 +8,7 @@
 
 import SwiftUI
 import RealityKit
-import RealityKitContent
+
 
 struct ContentView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
@@ -18,24 +19,41 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            TextField("Enter prompt here", text: $prompt) 
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            Button(immersiveSpaceActive ? "Exit Environment" : "View Environment") {
-                Task {
-                    if !immersiveSpaceActive {
-                        viewModel.prompt = prompt 
-                        _ = await openImmersiveSpace(id: "Environment")
-                        immersiveSpaceActive = true
-                    } else {
+            if !immersiveSpaceActive {
+                
+                Text("Welcome to The Gallery")
+                    .font(.system(size: 60, weight: .bold))
+                Text("Where would you like to go?")
+                    .font(.system(size: 40, weight: .bold))
+                
+                TextField("Enter your dream art space here!", text: $prompt)
+                    .font(.system(size: 40, weight: .bold))
+                    .multilineTextAlignment(.center)
+                    .frame(width: 800, height: 100)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                    
+                    Button("View Environment") {
+                        Task {
+                            viewModel.prompt = prompt
+                            _ = await openImmersiveSpace(id: "Environment")
+                            immersiveSpaceActive = true
+                        }
+                    }
+                  
+                
+            } else {
+                
+                MeditateWelcomeView(immersiveSpaceActive: $immersiveSpaceActive, prompt: $prompt, exitEnvironment: {
+                    Task {
                         await dismissImmersiveSpace()
                         immersiveSpaceActive = false
+                        
                     }
-                }
+                })
             }
-
         }
+        .padding()
     }
 }
 

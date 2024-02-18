@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E461B962B81CFD100360203 /* MeditateWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E461B952B81CFD100360203 /* MeditateWelcomeView.swift */; };
+		1E461B982B81D00600360203 /* BreathingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E461B972B81D00600360203 /* BreathingAnimationView.swift */; };
 		6DC21BE62B807AAB009BAA08 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 6DC21BE52B807AAB009BAA08 /* RealityKitContent */; };
 		6DC21BE82B807AAB009BAA08 /* GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC21BE72B807AAB009BAA08 /* GalleryApp.swift */; };
 		6DC21BEA2B807AAB009BAA08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC21BE92B807AAB009BAA08 /* ContentView.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E461B952B81CFD100360203 /* MeditateWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MeditateWelcomeView.swift; path = Gallery/MeditateWelcomeView.swift; sourceTree = SOURCE_ROOT; };
+		1E461B972B81D00600360203 /* BreathingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingAnimationView.swift; sourceTree = "<group>"; };
 		6DC21BE02B807AAB009BAA08 /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC21BE42B807AAB009BAA08 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		6DC21BE72B807AAB009BAA08 /* GalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryApp.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 			children = (
 				6DC21BE92B807AAB009BAA08 /* ContentView.swift */,
 				6DC21BEB2B807AAB009BAA08 /* ImmersiveView.swift */,
+				1E461B952B81CFD100360203 /* MeditateWelcomeView.swift */,
+				1E461B972B81D00600360203 /* BreathingAnimationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,7 +209,9 @@
 				6DC21BE82B807AAB009BAA08 /* GalleryApp.swift in Sources */,
 				6DC21BFF2B807C14009BAA08 /* ImageDownloader.swift in Sources */,
 				6DC21BEC2B807AAB009BAA08 /* ImmersiveView.swift in Sources */,
+				1E461B962B81CFD100360203 /* MeditateWelcomeView.swift in Sources */,
 				6DC21C012B808715009BAA08 /* SharedViewModel.swift in Sources */,
+				1E461B982B81D00600360203 /* BreathingAnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
