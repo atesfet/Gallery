@@ -23,6 +23,7 @@ struct ImmersiveView: View {
                 RealityViewSetup(cgImage: cgImage)
             } else if imageDownloader.isLoading {
                 Text("Loading environment...")
+                    
             } else {
                 // RealityView setup with placeholderCGImage
                 RealityViewSetup(cgImage: placeholderCGImage)
